@@ -64,7 +64,7 @@ public class MorbidlabsDashboard extends SettingsPreferenceFragment implements V
         } else if (v == themes) {
             startActivity("ThemeActivity");
         } else if (v == fonts) {
-            startActivity("FontsPickerActivity");
+            startActivity("FontPickerPreviewActivity");
         }
     }
 
