@@ -390,4 +390,9 @@
     <string name="heads_up_snooze_10min">10 minutes</string>
     <string name="heads_up_snooze_15min">15 minutes</string>
     <string name="heads_up_snooze_20min">20 minutes</string>
+
+    <!-- Pocket Mode-->
+    <string name="pocket_mode_category">Pocket Mode</string>
+    <string name="lock_screen_pocket_detection_title">Pocket detection</string>
+    <string name="lock_screen_pocket_detection_summary">Block screen and button inputs when device is in pocket</string>
 </resources>

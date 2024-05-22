@@ -24,9 +24,11 @@ import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.text.TextUtils;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
@@ -47,13 +49,25 @@ import java.util.List;
 public class Misc extends SettingsPreferenceFragment 
             implements Preference.OnPreferenceChangeListener {
 
+    private static final String KEY_POCKET_CATEGORY = "pocket_mode_category";
+    private static final String KEY_POCKET_DETECTION = "pocket_judge";
+
+    private PreferenceCategory mPocketCategory;
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         addPreferencesFromResource(R.xml.category_misc);
+        final Context context = getContext();
         PreferenceScreen prefSet = getPreferenceScreen();
-        final Resources res = getResources();
+        final Resources res = context.getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+        mPocketCategory = (PreferenceCategory) findPreference(KEY_POCKET_CATEGORY);
+
+        boolean pocketDetectionAvailable = res.getBoolean(
+                com.android.internal.R.bool.config_pocketModeSupported);
+        if (!pocketDetectionAvailable) {
+            prefScreen.removePreference(mPocketCategory);
+        }
     }
 
     @Override
@@ -78,6 +92,12 @@ public class Misc extends SettingsPreferenceFragment
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     final List<String> keys = super.getNonIndexableKeys(context);
+                    final Resources res = context.getResources();
+                boolean pocketDetectionAvailable = res.getBoolean(
+                        com.android.internal.R.bool.config_pocketModeSupported);
+                if (!pocketDetectionAvailable) {
+                    keys.add(KEY_POCKET_DETECTION);
+                }
                     return keys;
                 }
             };
