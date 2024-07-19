@@ -19,6 +19,7 @@
     <!-- MorbidLabs Header -->
     <com.android.settingslib.widget.LayoutPreference
         android:layout="@layout/morbidlabs_header"
+        android:clickable="false"
         android:key="morbidlabs_header" />
 
     <PreferenceCategory
