@@ -43,11 +43,19 @@
         android:title="@string/pocket_mode_category">
 
         <!-- Pocket detection -->
-        <com.android.settings.custom.preference.SystemSettingSwitchPreference
-            android:key="pocket_judge"
+        <com.android.settings.custom.preference.SecureSettingSwitchPreference
+            android:key="pocket_mode_enabled"
             android:title="@string/lock_screen_pocket_detection_title"
             android:summary="@string/lock_screen_pocket_detection_summary"
             android:defaultValue="false" />
+
+        <com.android.settings.custom.preference.SecureSettingSwitchPreference
+            android:key="always_on_pocket_mode_enabled"
+            android:title="@string/always_on_pocket_mode_enabled_title"
+            android:summary="@string/always_on_pocket_mode_summary"
+            android:dependency="pocket_mode_enabled"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory

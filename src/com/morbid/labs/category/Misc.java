@@ -49,10 +49,6 @@ import java.util.List;
 public class Misc extends SettingsPreferenceFragment 
             implements Preference.OnPreferenceChangeListener {
 
-    private static final String KEY_POCKET_CATEGORY = "pocket_mode_category";
-    private static final String KEY_POCKET_DETECTION = "pocket_judge";
-
-    private PreferenceCategory mPocketCategory;
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -61,13 +57,6 @@ public class Misc extends SettingsPreferenceFragment
         PreferenceScreen prefSet = getPreferenceScreen();
         final Resources res = context.getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
-        mPocketCategory = (PreferenceCategory) findPreference(KEY_POCKET_CATEGORY);
-
-        boolean pocketDetectionAvailable = res.getBoolean(
-                com.android.internal.R.bool.config_pocketModeSupported);
-        if (!pocketDetectionAvailable) {
-            prefScreen.removePreference(mPocketCategory);
-        }
     }
 
     @Override
@@ -93,11 +82,6 @@ public class Misc extends SettingsPreferenceFragment
                 public List<String> getNonIndexableKeys(Context context) {
                     final List<String> keys = super.getNonIndexableKeys(context);
                     final Resources res = context.getResources();
-                boolean pocketDetectionAvailable = res.getBoolean(
-                        com.android.internal.R.bool.config_pocketModeSupported);
-                if (!pocketDetectionAvailable) {
-                    keys.add(KEY_POCKET_DETECTION);
-                }
                     return keys;
                 }
             };
