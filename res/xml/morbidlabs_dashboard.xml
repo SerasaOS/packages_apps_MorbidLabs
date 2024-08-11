@@ -22,9 +22,6 @@
         android:clickable="false"
         android:key="morbidlabs_header" />
 
-    <PreferenceCategory
-        settings:layout="@layout/card_category">
-        
         <!-- Statusbar -->
         <Preference
             android:icon="@drawable/ic_sb"
@@ -56,6 +53,5 @@
             android:summary="Extra stuff.."
             android:fragment="com.morbid.labs.category.Misc"
             settings:layout="@layout/card_right_bot" />
-    </PreferenceCategory>
     
 </PreferenceScreen>

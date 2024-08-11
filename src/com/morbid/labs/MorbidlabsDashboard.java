@@ -127,7 +127,7 @@ public class MorbidlabsDashboard extends SettingsPreferenceFragment implements V
     class SpanSizeLookupG extends GridLayoutManager.SpanSizeLookup {
         @Override
         public int getSpanSize(int position) {
-            if (position == 0 || position == 1 || position == 6) {
+            if (position == 0) {
                 return 2;
             } else {
                 return 1;
